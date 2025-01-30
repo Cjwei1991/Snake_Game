@@ -16,6 +16,7 @@ const initialGameState = {
 const speed = 1000;
 const GRID_SIZE = 20;
 const CELL_SIZE = canvas.width / GRID_SIZE
+const ctx = canvas.getContext('2d');
 
 
 /*---------------------------- Variables (state) ----------------------------*/
@@ -104,6 +105,8 @@ const head = gameState.snake[0];
             gameState.gameOver = true;
         }
     }
+  if (gameState.gameOver) {
+        clearInterval(timer);}
 }
 
 const changeUpDir = ()=> {
@@ -126,7 +129,22 @@ if (gameState.direction !== 'UP') {
 }
 
 
+const render = () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+    // Draw snake
+    ctx.fillStyle = 'green';
+    gameState.snake.forEach(segment => {
+        ctx.fillRect(segment.x * CELL_SIZE, segment.y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
+    });
+
+    // Draw food
+    ctx.fillStyle = 'red';
+    ctx.fillRect(gameState.food.x * CELL_SIZE, gameState.food.y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
+
+    // Update score display
+    scoreDisplay.textContent = `Score: ${gameState.score}`;
+};
 
 
 
