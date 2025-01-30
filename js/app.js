@@ -31,7 +31,7 @@ const finalScoreDisplay = document.getElementById('final-score');
 
 // b. Constants for buttons inside the 'controls' 
 const upBtnEl = document.getElementById('up');
-const liftdBtnEl = document.getElementById('lift');
+const leftdBtnEl = document.getElementById('left');
 const rightBtnEl = document.getElementById('right');
 const downBtnEl = document.getElementById('down');
 
@@ -42,15 +42,7 @@ const canvas = document.getElementById('game-board');
 /*-------------------------------- Functions --------------------------------*/
 
 const init =()=>{
-    initialGameState.snake = [
-        { x: 10, y: 10 },  // Head
-        { x: 9, y: 10 },   // Body segment
-        { x: 8, y: 10 }    // Tail
-      ];
-    initialGameState.food = { x: 15, y: 15 };
-    initialGameState.direction = 'RIGHT';
-    initialGameState.score = 0;
-    initialGameState.gameOver = false;
+    gameState = { ...initialGameState };
     render ();
     clearInterval(timer)
     timer = setInterval(runGame, speed);
@@ -58,32 +50,79 @@ const init =()=>{
 
 const runGame = () =>{
 
-    if (initialGameState.gameOver) return;
+    if (gameState.gameOver) return;
     moveSnake();
     checkCollision();
 }
 
 const moveSnake = ()=>{
+const head = { ...gameState.snake[0] };
 
+    switch (gameState.direction) {
+        case 'UP':
+            head.y -= 1;
+            break;
+        case 'DOWN':
+            head.y += 1;
+            break;
+        case 'LEFT':
+            head.x -= 1;
+            break;
+        case 'RIGHT':
+            head.x += 1;
+            break;
+    }
+}
+gameState.snake.unshift(head);
+
+    if (head.x === gameState.food.x && head.y === gameState.food.y) {
+        gameState.score += 1;
+        placeFood();
+    } else {
+        gameState.snake.pop();
+    }
+
+const placeFood =()=>{
+gameState.food = {
+        x: Math.floor(Math.random() * GRID_SIZE),
+        y: Math.floor(Math.random() * GRID_SIZE)
+    };
 }
 
 const checkCollision =()=>{
+const head = gameState.snake[0];
 
+    if (
+        head.x < 0 || head.x >= GRID_SIZE ||
+        head.y < 0 || head.y >= GRID_SIZE
+    ) {
+        gameState.gameOver = true;
+    }
+
+    for (let i = 1; i < gameState.snake.length; i++) {
+        if (head.x === gameState.snake[i].x && head.y === gameState.snake[i].y) {
+            gameState.gameOver = true;
+        }
+    }
 }
 
 const changeUpDir = ()=> {
-
+if (gameState.direction !== 'DOWN') {
+        gameState.direction = 'UP';}
 }
 
-const changeLiftDir = ()=> {
-    
+const changeLeftDir = ()=> {
+if (gameState.direction !== 'RIGHT') {
+        gameState.direction = 'LEFT';}    
 }
 
 const changeRightDir = ()=> {
-    
+if (gameState.direction !== 'LEFT') {
+        gameState.direction = 'RIGHT';}    
 }
 const changeDownDir = ()=> {
-    
+if (gameState.direction !== 'UP') {
+        gameState.direction = 'DOWN';}    
 }
 
 
@@ -101,7 +140,7 @@ const changeDownDir = ()=> {
 
 
 upBtnEl.addEventListener('click',changeUpDir);
-liftdBtnEl.addEventListener('click',changeLiftDir);
+leftdBtnEl.addEventListener('click',changeLeftDir);
 rightBtnEl.addEventListener('click',changeRightDir);
 downBtnEl.addEventListener('click',changeDownDir); 
 
