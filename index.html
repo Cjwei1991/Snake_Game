@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,16 @@
     <script defer src="./js/app.js"></script>
     <title>Snake Game</title>
 </head>
+
 <body>
     <h1>Snake Game</h1>
+    <div id="instructions">
+        <p>
+            Use the arrow keys or click on the direction buttons to control the snake.
+            Eat the red food to increase your score and grow longer. Avoid hitting the
+            walls or the snake’s own body. Reach a score of 100 to win the game!
+        </p>
+    </div>
     <div id="game-container">
         <div id="score">Score: 0</div>
         <canvas id="game-board" width="400" height="400"></canvas>
@@ -18,11 +27,12 @@
             <button class="dir-btn" id="right" data-dir="RIGHT">→</button>
             <button class="dir-btn" id="down" data-dir="DOWN">↓</button>
         </div>
-        <div id="game-over">
+        <div id="game-over" class="hidden">
             <h2>Game Over!</h2>
-            <div id="final-score">Score: 0</div>
-            <p>Refresh to play again</p>
+            <div id="final-score">Final Score: 0</div>
+            <button class="dir-btn" id="restart">Play Again</button>
         </div>
     </div>
 </body>
+
 </html>
