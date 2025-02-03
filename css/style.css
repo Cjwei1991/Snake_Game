@@ -8,15 +8,28 @@ body {
     min-height: 100vh;
 }
 
+#instructions {
+    width: 80%;
+    max-width: 600px;
+    margin: 10px auto;
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+}
+
+
 #game-container {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-top: 20px;
 }
 
 #score {
-    font-size: 2em;
+    font-size: 24px;
     color: #2E7D32;
-    margin: 20px 0;
+    margin: 10px 0;
 }
 
 #game-board {
@@ -29,7 +42,11 @@ body {
     margin: 20px 0;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     gap: 10px;
+    justify-items: center;
+    align-items: center;
+    width: fit-content;
 }
 
 .dir-btn {
@@ -42,6 +59,7 @@ body {
     color: white;
     cursor: pointer;
     transition: all 0.2s ease;
+    position: center;
 }
 
 .dir-btn:hover {
@@ -83,7 +101,6 @@ body {
     padding: 30px;
     border-radius: 10px;
     text-align: center;
-    display: none;
     z-index: 1000;
 }
 
@@ -95,4 +112,14 @@ body {
 #final-score {
     font-size: 1.5em;
     margin: 10px 0;
+}
+
+#restart {
+    width: 120px;
+    height: 80px;
+}
+
+
+.hidden {
+    visibility: hidden;
 }
