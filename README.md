@@ -1,5 +1,5 @@
-# browser-based-game-project
-Snake Game
+# Snake Game
+
 ![image](https://github.com/user-attachments/assets/0d009596-ca86-45cd-930d-6177f08df055)
 
 
