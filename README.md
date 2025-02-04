@@ -1,5 +1,7 @@
 # browser-based-game-project
 Snake Game
+![image](https://github.com/user-attachments/assets/0d009596-ca86-45cd-930d-6177f08df055)
+
 
 Pseudocode
 
@@ -40,7 +42,7 @@ Pseudocode
 
 
 
-Deployed Game: https://cjwei1991.github.io/browser-based-game-project/
+Deployed Game: https://cjwei1991.github.io/Snake_Game/
 Instructions:
 Use the arrow keys on your keyboard or click on the on-screen directional buttons to control the snake.
 Eat the red food to grow longer and increase your score.
