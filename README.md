@@ -37,3 +37,21 @@ Pseudocode
 //   3. Check if the new head is on the food.
 //   4. If yes, generate new food and increase score. Don't pop the tail, so length increases by 1.
 //   5. If no, pop the tail, maintaining length.
+
+
+
+Deployed Game: https://cjwei1991.github.io/browser-based-game-project/
+Instructions:
+Use the arrow keys on your keyboard or click on the on-screen directional buttons to control the snake.
+Eat the red food to grow longer and increase your score.
+Avoid crashing into the walls or your own tail.
+Reach a score of 10 to win the game!
+
+Technologies Used
+HTML for structuring the game interface.
+CSS for styling the layout and elements.
+JavaScript for game logic, state management, and user interaction.
+Canvas API for drawing the snake and food on the game board.
+
+Next Steps
+Difficulty Levels: Introduce multiple difficulty settings (e.g., slow, medium, fast) for a more customized gaming experience.
